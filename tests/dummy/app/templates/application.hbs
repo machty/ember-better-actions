@@ -1,3 +1,55 @@
-<h2 id='title'>Welcome to Ember.js</h2>
+<h2 id='title'>Welcome to better-actions</h2>
 
-{{outlet}}
+<p>
+  <a href="https://github.com/machty/ember-better-actions">Source (ember-cli addon)</a>
+  <a href="https://github.com/emberjs/rfcs/pull/2">Better Actions RFC</a>
+</p>
+
+<h3>Better Actions in Forms</h3>
+
+<p>
+  Note that .perform() is ignored when called on pending actions -- a
+  useful default to prevent double taps/submits.
+</p>
+
+<form {{action submitForm on='submit'}} {{bind-attr class="submitForm.state"}}>
+  Check if submit should fail {{input type='checkbox' checked=shouldFail}}
+  <button type="submit" {{bind-attr disabled="submitForm.pending"}}>{{submitText}}</button>
+
+  {{#if submitForm.resolved}}
+    <button {{action submitForm.resetAction}}>Reset</button>
+  {{/if}}
+
+  {{#liquid-if submitForm.pending use='crossFade'}}
+    <div class="the-clock"></div>
+  {{/liquid-if}}
+</form>
+
+<h3>Better Action Modals</h3>
+
+<p>
+  This embraces the idea of a global modal service that
+  you can pass actions to that are so important that they 
+  should block the whole app (obviously we'd need further
+  seal-proofing with the back button and friends, but this
+  might light some idea bulbs)
+</p>
+
+<button {{action doSomeGlobalModalThing}}>Fire up the modal</button>
+
+<h3>Todo</h3>
+
+<ul>
+  <li>should just be able to do \{{action submitForm.reset}}, not resetAction</li>
+  <li>this is the Action Objects implementation; I would have had to
+    hack Ember Metal to make the Action Functions implementation work,
+    though I like that one better since it means you don't have to put
+    .perform() all over the place</li>
+  <li>I'd like better patterns/support for chaining actions together
+      into a sequence, making it easier to expose the state of which
+      "step" the aggregate action is on
+  </li>
+</ul>
+
+{{render 'global-modal'}}
+
