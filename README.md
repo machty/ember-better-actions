@@ -3,7 +3,7 @@
 ember-cli addon for the better actions concept I've been working on,
 outline by [this RFC](https://github.com/emberjs/rfcs/pull/2)
 
-[Demo](https://machty.s3.amazonaws.com/ember/better-actions/index.html)
+[Demo](http://development.better-actions.divshot.io/)
 
 ## Usage
 

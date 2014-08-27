@@ -32,6 +32,7 @@
     "ember-cli-qunit": "0.0.5",
     "express": "^4.8.5",
     "glob": "^4.0.5",
-    "liquid-fire": "~0.7.0"
+    "liquid-fire": "~0.7.0",
+    "ember-cli-divshot": "~0.1.2"
   }
 }
